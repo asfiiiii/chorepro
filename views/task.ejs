@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChorePro</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/topbar.css" />
+    <link rel="stylesheet" href="/css/main_body.css" />
+    <link rel="stylesheet" href="/css/newTask.css" />
+  </head>
+  <body >
+   
+    <!-- <%- include("./partials/flash.ejs") %> -->
+
+    <main>
+      <%- include("./sidebar.ejs") %>
+
+      <div class="main">
+        <%- include("./topbar.ejs") %>
+        <%- include("./newTask.ejs") %>
+
+        <div class="main_body">
+                   
+            <div class="reviews">
+              <div class="task">
+                <div class="author">
+                  <div class="assign_to">
+                    <% if(loggedUser && tasks.client.equals(loggedUser._id)){ %>
+                      <div class="dropmenu ">
+                      <div class="dropmenu-content ">
+                        <% if(tasks.status==='pending'){ %>
+                        <form action="/home/<%=tasks._id%>?_method=put" method="post">
+                          <button class="status" name="status" value="paused">Pause</button>
+                        </form>
+                        <% } else if(tasks.status === 'paused'){ %>
+                          <form action="/home/<%=tasks._id%>?_method=put" method="post">
+                            <button class="status" name="status" value="pending">Resume</button>
+                          </form>
+                          <% } %>
+                        <form action="/home/<%= tasks._id %>?_method=delete" method="post">
+                          <button>Delete</button>
+                        </form>
+                      </div>
+                    </div>
+                    <% } %>
+                    <img src="/images/p3.png" style="width: 30px; margin: 0px 2px" alt="" />
+                    <h5 style="margin-top: 7px; text-transform: capitalize;"><%= tasks.client.username %></h5>
+                    <% if(loggedUser && tasks.client.equals(loggedUser._id)){ %>
+
+                    <button class="drop-down open" id="hehe">          
+                        <i class="uil uil-ellipsis-h "  style="font-size: 1.4rem; margin-bottom: 5px;"></i>
+                    </button>
+                    <button class="drop-down close" id="hehe1">          
+                        <i class="uil uil-times "  style="font-size: 1.4rem; margin-bottom: 5px;"></i>
+                    </button>
+                    <% } %>
+                    
+                  </div>
+                  <div class="assign_by">
+                   <span> <b>Assigned By:</b> <span class="name" style="text-transform: capitalize;">
+                    <%= tasks.author.username %>
+
+                    </span> </span> 
+                    <span class="time"><i class="uil uil-clock-eight"></i><%= tasks.time %></span>
+                  </div>
+                </div>
+                <div class="info">
+                  <div class="one">
+                    <i class="uil uil-check-circle" style="font-size: 1.65rem;color: black;"></i>
+                    <p class="title" style="padding-top: 5px;">
+                        <%= tasks.title %>
+
+                    </p>
+                  </div>
+                  <div class="two">
+                    <% if(tasks.status ==='pending' && tasks.client.equals(loggedUser._id)){ %>
+                      <form action="/home/<%=tasks._id%>?_method=put" method="post">
+                        <button class="status" name="status" value="completed">Mark As Done</button>
+                      </form>
+                    <% } %>
+                  </div>
+                </div>
+                <div class="desc">
+                    <%= tasks.description %>
+                </div>
+                <div class="posted">
+                  <h4 style="font-size: 1.30rem;font-weight: 500; font-family: Roboto Slab;">Comments (<%= tasks.review.length %>)</h4>
+                  <div class="coms">
+                    <% for(let i = tasks.review.length - 1; i >= 0; i--) { %>
+                      <div class="com" style="display: flex; margin-top: 5px;">
+                        <div>
+                          <img src="/images/p4.png" style="width: 30px; margin: 0px 2px; margin-top: 7px;" alt="" />
+                        </div>
+                        <div class="posted_comment" style="margin-left: 10px; border-bottom: 0.5px solid rgb(233, 232, 232);">
+                          <div class="author_time">
+                            <span style="font-weight: 600; margin-right:10px; text-transform: capitalize;"><%= tasks.review[i].author.username %></span>
+                            <div style="display: inline-flex; justify-content: center; align-items: center;">
+
+                              <% if(loggedUser && tasks.review[i].author.equals(loggedUser._id ) || tasks.client.equals(loggedUser._id)){ %>
+                              <form action="/home/<%= tasks._id %>/reviews/<%= tasks.review[i]._id %>?_method=delete" method="post">
+                                <button class="delete">
+                                  <i class="uil uil-trash"></i>
+                                </button>
+                              </form>
+                              <% } %>
+                              <span style="color: grey; font-size: 0.7rem;"><%= tasks.review[i].time %></span>
+                            </div>
+                          </div>
+                          <p><%= tasks.review[i].comment %></p>
+                        </div>
+                      </div>
+                    <% } %>
+                    
+                  </div>
+                </div>
+                
+                <div class="comments">
+                  <div class="img">
+                    <img src="/images/p4.png" style="width: 35px; margin: 0px 2px; margin-top: 7px;" alt="" />
+                  </div>
+                  <form action="/home/<%= tasks._id %>/reviews" method="post">
+                    <div class="comment">
+                      <div class="input-container">
+                        <input placeholder="Share your thoughts ..." class="input-field" type="text" name="comment">
+                        <span class="input-highlight"></span>
+                      </div>
+                      <button>
+                        <span>
+                          Comment
+                        </span>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+    </main>
+    
+   
+    <script>
+      const toggle = document.querySelector("#hehe");
+      const toggle1 = document.querySelector("#hehe1");
+      const menu = document.querySelector(".dropmenu");
+
+      toggle.addEventListener("click", () => {  
+      menu.classList.toggle("open_it");
+      toggle1.style.display="block";
+      toggle.style.display="none";
+      });
+
+      toggle1.addEventListener("click", () => {
+      menu.classList.toggle("open_it");
+      toggle1.style.display="none";
+      toggle.style.display="block";
+
+      });
+
+    </script>
+    <script src="js/newtasks.js"></script>
+    
+  </body>
+</html>
+
+

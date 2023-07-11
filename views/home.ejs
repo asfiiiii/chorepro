@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChorePro</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/topbar.css" />
+    <link rel="stylesheet" href="css/main_body.css" />
+    <link rel="stylesheet" href="css/newTask.css" />
+  </head>
+  <body>
+    <!-- <%- include("./partials/flash.ejs") %> -->
+
+    <main>
+      <% if(loggedUser){ %>
+
+      <%- include("./sidebar.ejs") %>
+
+      <div class="main">
+        <%- include("./topbar.ejs") %>
+        <%- include("./newTask.ejs") %>
+        <div class="main_body">
+          
+          <div class="tasks">
+            
+            <div class="wrapper center-block">
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <!-- pendind Tasks -->
+                <div class="panel panel-default">
+                  <div class="panel-heading active" role="tab" id="headingOne">
+                    <h4 class="panel-title" style="display: flex; justify-content: space-between;">
+                      <a>
+                        Pending Tasks
+                      </a>
+                      <a style="padding-top: 7px;" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        <i class="arrow uil uil-plus-circle"></i>
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                      <% for(let task of tasks) { %>
+                        <% if (task.status === 'pending') { %>
+                          <div class="task">
+                            <div class="one">
+                              <div style="display: flex;">
+                                <i class="uil uil-check-circle"></i>
+                                <p class="title">                             
+                                <%= task.title %>
+                              </p>
+                              </div>
+                              <div class="info">
+                                <p>Assigned By: <span class="inf"><%= task.author.username %></span></p>
+                              </div>
+                            </div>
+                            <div class="two">
+                              <div class="buttns">
+                                <p class="status-pen"> <%= task.status %></p>
+                                <a href="/home/<%= task._id %>">Check</a>
+                              </div>
+                              <span class="time"><i class="uil uil-clock-eight"></i><%= task.time %></span>
+                            </div>
+                          </div>
+                        <% } %>
+                      <% } %>
+                    </div>
+                  </div>
+                </div>
+            
+                <!-- paused Tasks -->
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingFour">
+                    <h4 class="panel-title" style="display: flex; justify-content: space-between;">
+                      <a>
+                        Paused Tasks
+                      </a>
+                      <a style="padding-top: 7px;" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <i class="arrow uil uil-plus-circle"></i>
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                    <div class="panel-body">
+                      <% for(let task of tasks) { %>
+                        <% if (task.status === 'paused') { %>
+                          <div class="task">
+                            <div class="one">
+                              <div style="display: flex;">
+                                <i class="uil uil-check-circle"></i>
+                                <p class="title">                             
+                                <%= task.title %>
+                              </p>
+                              </div>
+                              <div class="info">
+                                <p>Assigned By: <span class="inf"><%= task.author.username %></span></p>
+                              </div>
+                            </div>
+                            <div class="two">
+                              <div class="buttns">
+                                <p class="status-paused"> <%= task.status %></p>
+                                <a href="/home/<%= task._id %>">Check</a>
+                              </div>
+                              <span class="time"><i class="uil uil-clock-eight"></i><%= task.time %></span>
+                            </div>
+                          </div>
+                        <% } %>
+                      <% } %>
+                    </div>
+                  </div>
+                </div>
+                <!-- completed Tasks -->
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title" style="display: flex; justify-content: space-between;">
+                      <a>
+                        Completed Tasks
+                      </a>
+                      <a style="padding-top: 7px;" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <i class="arrow uil uil-plus-circle"></i>
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                      <% for(let task of tasks) { %>
+                        <% if (task.status === 'completed') { %>
+                          <div class="task">
+                            <div class="one">
+                              <div style="display: flex;">
+                                <i class="uil uil-check-circle"></i>
+                                <p class="title">                             
+                                <%= task.title %>
+                              </p>
+                              </div>
+                              <div class="info">
+                                <p>Assigned By: <span class="inf"><%= task.author.username %></span></p>
+                              </div>
+                            </div>
+                            <div class="two">
+                              <div class="buttns">
+                                <p class="status-comp"> <%= task.status %></p>
+                                <a href="/home/<%= task._id %>">Check</a>
+                              </div>
+                              <span class="time"><i class="uil uil-clock-eight"></i><%= task.time %></span>
+                            </div>
+                          </div>
+                        <% } %>
+                      <% } %>
+                    </div>
+                  </div>
+                </div>
+                <!-- Assigned Tasks -->
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title" style="display: flex; justify-content: space-between;">
+                      <a>
+                        Assigned Tasks
+                      </a>
+                      <a style="padding-top: 7px;" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        <i class="arrow uil uil-plus-circle"></i>
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseThree" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                      <% for(let task of assigned_tasks) { %>
+                          <div class="task">
+                            <div class="one">
+                              <div style="display: flex;">
+                                <i class="uil uil-check-circle"></i>
+                                <p class="title">                             
+                                <%= task.title %>
+                              </p>
+                              </div>
+                              <div class="info">
+                                <p>Assigned To: <span class="inf"><%= task.client.username %></span></p>
+                              </div>
+                            </div>
+                            <div class="two">
+                              <div class="buttns">
+                                <% if(task.status === 'pending'){ %>
+                                  <p class="status-pen"> <%= task.status %></p>
+                                  <% } %>
+                                  <% if(task.status === 'paused'){ %>
+                                    <p class="status-paused"> <%= task.status %></p>
+                                    <% } %>
+                                <% if(task.status === 'completed'){ %>
+                                  <p class="status-comp"> <%= task.status %></p>
+                                  <% } %>
+                               
+                                <a href="/home/<%= task._id %>">Check</a>
+                              </div>
+                              <span class="time"><i class="uil uil-clock-eight"></i><%= task.time %></span>
+                            </div>
+                          </div>
+                      <% } %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+           
+            
+            
+            
+            </div>
+         
+            
+          </div>
+
+          
+        </div>
+      </div>
+      <% } else {%>
+        <p>hehe login</p>
+      <% } %>
+    </main>
+    
+   
+    
+    <script src="js/newTask.js"></script>
+    
+  </body>
+</html>
+
+

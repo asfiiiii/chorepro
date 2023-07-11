@@ -1,0 +1,106 @@
+/* Styling for the overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: none;
+}
+
+.fragment {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.open-btn:hover {
+  cursor: pointer;
+}
+.close-btn {
+  position: absolute;
+  top: 1px;
+  right: 5px;
+  background-color: inherit;
+  border: none;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+.close-btn:hover {
+  background-color: rgb(240, 239, 239);
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown span {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.dropdown select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown select:focus {
+  outline: none;
+  border-color: #5c9be5;
+  box-shadow: 0 2px 4px rgba(243, 8, 8, 0.1), 0 0 0 2px rgba(41, 127, 226, 0.2);
+}
+
+.dropdown select option {
+  font-size: 14px;
+  color: #3d3d3d;
+}
+
+.buttonn {
+  cursor: pointer;
+  font-weight: 600;
+  font-family: Helvetica, "sans-serif";
+  transition: all 0.2s;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: #4968ff;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.buttonn:hover {
+  background: #3454f3;
+}
+
+.buttonn > svg {
+  width: 20px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+  color: white;
+}
+
+.buttonn:hover svg {
+  transform: translateX(5px);
+}
+
+.buttonn:active {
+  transform: scale(0.95);
+}

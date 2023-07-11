@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(14, 5, 72);
+  height: 100vh;
+  max-width: 20%;
+}
+
+.sidebar .logo {
+  display: flex;
+  align-items: end;
+  border-bottom: 1px solid rgb(76, 76, 76);
+}
+.sidebar .logo img {
+  width: 65px;
+}
+.sidebar .logo p {
+  color: white;
+  font-size: 1.5rem;
+}
+.sidebar .logo span {
+  color: yellow;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.sidebar .personal section {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 20px;
+}
+.sidebar .personal,
+.sidebar .marketing,
+.sidebar .projects {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+  margin: 20px 0px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgb(76, 76, 76);
+}
+.sidebar .personal a,
+.sidebar .marketing a,
+.sidebar .projects a {
+  color: rgb(207, 206, 206);
+  text-decoration: none;
+  font-size: 1.1rem;
+  margin: 4px 0px;
+  font-weight: 500;
+  width: 160px;
+  font-family: "Roboto Slab", serif;
+}
+.sidebar .personal a:hover,
+.sidebar .marketing a:hover,
+.sidebar .projects a:hover {
+  color:aliceblue
+}
+
+.sidebar .marketing,
+.sidebar .projects {
+  margin-top: 0px;
+}
+.sidebar .marketing a,
+.sidebar .projects a {
+  font-size: 1rem;
+}
+.sidebar .marketing h4,
+.sidebar .projects h4 {
+  color: white;
+}
+
+.main {
+  width: 100%;
+  overflow: hidden;
+}

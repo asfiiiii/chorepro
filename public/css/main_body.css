@@ -1,0 +1,466 @@
+.main_body {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+.tasks {
+  width: 82%;
+  height: 80vh;
+  overflow: auto;
+  border: 0.5px solid rgb(247, 247, 247);
+  box-shadow: 0px 2px 3.5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #d5d3d3;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #656565;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(56, 56, 56);
+  pointer-events: painted;
+}
+.reviews {
+  border: 0.5px solid rgb(247, 247, 247);
+  box-shadow: 0px 2px 3.5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 85%;
+  height: 84vh;
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.task .two {
+  display: flex;
+}
+.tasks .task {
+  border-bottom: 0.2px dotted rgb(230, 230, 230);
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 3px;
+  padding: 5px 2px;
+}
+.one {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.one i {
+  font-size: 1.3rem;
+  color: grey;
+  margin-left: 5px;
+}
+.one .title {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: grey;
+  margin: 0px 5px;
+  white-space: wrap;
+  max-width: 540px;
+}
+.reviews .two .status {
+  background-color: rgb(31, 194, 31);
+  color: white;
+  font-weight: 600;
+  border-color: transparent;
+  outline: none;
+}
+.two .buttns {
+  display: flex;
+  flex-direction: column;
+}
+
+.two .buttns .status-comp {
+  background-color: rgb(11, 210, 11);
+  color: rgb(255, 255, 255);
+  padding: 2px 5px;
+  border-radius: 5px;
+  margin-bottom: 0px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  width: 68px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.two .buttns .status-paused {
+  background-color: rgb(239, 180, 29);
+  color: rgb(255, 255, 255);
+  padding: 2px 5px;
+  border-radius: 5px;
+  margin-bottom: 0px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  width: 68px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.two .buttns .status-pen {
+  background-color: rgb(230, 14, 14);
+  color: rgb(255, 255, 255);
+  padding: 2px 5px;
+  width: 68px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 0px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.two .buttns a {
+  background-color: rgb(48, 137, 252);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+
+  border-radius: 5px;
+  padding: 2px 5px;
+  margin-bottom: 0px;
+  text-align: center;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+.two .buttns a:hover {
+  color: whitesmoke;
+  text-decoration: dotted;
+  cursor: pointer;
+}
+
+.two .time {
+  color: grey;
+  font-size: 0.65rem;
+  margin-top: 10px;
+  margin-left: 9px;
+  margin-right: 7px;
+  white-space: nowrap;
+}
+.reviews .task .author {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px;
+  margin-top: 0px;
+  padding: 0px 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(244, 244, 244);
+}
+
+.reviews .task .author .assign_to {
+  display: flex;
+  align-items: center;
+}
+
+.reviews .task .author .assign_to h5 {
+  margin-left: 5px;
+  margin-right: 10px;
+}
+.drop-down {
+  background-color: inherit;
+  border-color: transparent;
+  font-size: 1rem;
+  padding-bottom: 5px;
+  transition: 0.1s linear;
+}
+.close {
+  margin-left: 19px;
+}
+.close i {
+  color: black;
+  margin: 0px;
+  padding: 0px;
+}
+.open i {
+  margin: 0px;
+  padding: 0px;
+}
+.drop-down:focus {
+  outline: none;
+  background-color: inherit;
+}
+.drop-down:hover {
+  font-size: 1.05rem;
+  background-color: inherit;
+}
+
+.reviews .task .author .assign_by {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+.reviews .task .author .assign_by .time {
+  color: grey;
+  font-size: 0.8rem;
+}
+.reviews .task .info {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+.reviews .task .info .title {
+  font-size: 1.45rem;
+  width: 100%;
+  color: rgb(42, 42, 42);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.reviews .task .desc {
+  margin: 0px 20px;
+  height: 100px;
+  padding: 20px;
+  padding-top: 0px;
+  padding-bottom: 5px;
+  color: grey;
+  border-bottom: 1px solid rgb(231, 231, 231);
+}
+.posted {
+  height: 170px;
+  margin: 10px 6px 0px 6px;
+  padding: 0px 10px;
+}
+.coms {
+  overflow: auto;
+  scroll-behavior: smooth;
+  height: 140px;
+  color: grey;
+}
+.coms::-webkit-scrollbar {
+  visibility: hidden;
+}
+
+.comments {
+  margin-top: auto;
+  align-self: flex-start;
+  display: flex;
+  color: greyt;
+  margin-left: 5px;
+}
+
+.posted_comment {
+  width: 90%;
+}
+.delete {
+  background-color: inherit;
+  outline: none;
+  padding: 0;
+  margin: 0px 10px;
+  margin-bottom: 7px;
+  border: transparent;
+  transform: 0.1s linear;
+  color: rgb(214, 118, 118);
+}
+.delete:hover {
+  outline: none;
+  background-color: inherit;
+  font-size: 1.03rem;
+}
+.delete:focus {
+  outline: none;
+}
+
+.author_time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px 5px 0px;
+}
+/* Input container */
+.input-container {
+  position: relative;
+}
+
+/* Input field */
+.input-field {
+  display: block;
+  width: 500px;
+  padding: 10px;
+  padding-top: 5px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #ccc;
+  background-color: transparent;
+}
+
+/* Input label */
+.input-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 16px;
+  color: rgba(204, 204, 204, 0);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Input highlight */
+.input-highlight {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: #007bff;
+  transition: all 0.3s ease;
+}
+
+/* Input field:focus styles */
+.input-field:focus + .input-label {
+  top: -20px;
+  font-size: 12px;
+  color: #007bff;
+}
+
+.input-field:focus + .input-label + .input-highlight {
+  width: 100%;
+}
+
+button {
+  border: 1px solid #24b4fb;
+  background-color: #24b4fb;
+  border-radius: 0.6em;
+  padding: 0.4em 1em 0.4em 1em;
+  transition: all ease-in-out 0.1s;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+button span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: #0071e2;
+}
+
+/* hehe */
+.wrapper {
+  width: 100%;
+}
+
+.panel-heading {
+  padding: 0;
+  border-bottom: 1px solid rgb(217, 216, 216);
+}
+.panel-title > a,
+.panel-title > a:active {
+  display: block;
+  padding: 15px;
+  color: #555;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 3px;
+  text-decoration: none;
+}
+.panel-body .title {
+  width: 600px;
+  font-size: 1.25rem;
+  margin-top: 0px;
+}
+
+.arrow {
+  font-size: 1.6rem;
+  transition: 0.3s ease-in-out;
+  margin-bottom: 10px;
+}
+.arrow:hover {
+  font-size: 1.67rem;
+}
+
+.dropmenu {
+  position: absolute;
+  background-color: transparent;
+  width: 160px;
+  left: 34.6%;
+  top: 19%;
+  backdrop-filter: blur(1px);
+  z-index: 1;
+  border: 1px solid rgb(247, 246, 246);
+  border-radius: 15px;
+  display: none;
+}
+
+.dropmenu-content {
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dropmenu button {
+  margin-bottom: 10px;
+  width: 70px;
+  padding: 4px 6px;
+  border: none;
+  font-weight: 600;
+  border-radius: 3px;
+  background-color: rgba(
+    54,
+    116,
+    240,
+    0.8
+  ); /* Adjust the opacity and color as desired */
+  color: #ffffff; /* Adjust the font color as desired */
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dropmenu button:hover {
+  background-color: rgb(
+    61,
+    124,
+    242
+  ); /* Adjust the opacity and color as desired */
+  color: #ffffff; /* Adjust the font color as desired */
+}
+
+.open {
+  display: block;
+}
+.close {
+  display: none;
+}
+.open_it {
+  display: block;
+}
+
+.one .info {
+  display: flex;
+  flex-direction: column;
+  width: 14 0px;
+  font-size: 0.7rem;
+  color: grey;
+  justify-content: center;
+  height: 50px;
+}
+.info p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 2px;
+}
+.inf {
+  font-weight: 600;
+  font-size: 0.76rem;
+  text-transform: capitalize;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}

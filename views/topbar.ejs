@@ -1,0 +1,33 @@
+<div class="topbar">
+  <div class="tabs">
+    <a href="/home">Tasks</a>
+      <a href="/">All Tasks</a>
+    <% if(loggedUser && req.url !== "/" && req.url !== ("/home/" + tasks._id)) {
+    %>
+    <a class="open-btn" role="button">Assign Task</a>
+    <% } %>
+  </div>
+  <div class="searchbar">
+    <i class="fas fa-search" aria-hidden="true"></i>
+    <input
+      class="form-control form-control-sm ml-3 w-75"
+      type="text"
+      placeholder="Search"
+      aria-label="Search"
+    />
+  </div>
+  <div class="account">
+    <% if(!loggedUser){ %>
+    <a href="/login">Login</a>
+    <a href="/register">Signup</a>
+    <% }else{ %>
+    <div class="acc">
+      <img src="/images/p1.png " style="width: 32px; margin: 0px 4px" alt="" />
+      <span><%= loggedUser.username %></span>
+    </div>
+    <div>
+      <a href="/logout">Logout</a>
+    </div>
+    <% } %>
+  </div>
+</div>
